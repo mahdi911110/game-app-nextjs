@@ -18,45 +18,49 @@ import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
-import WhatshotIcon from "@mui/icons-material/Whatshot";
 import StarIcon from "@mui/icons-material/Star";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Link from "next/link";
+import { useSidebarStore } from "@/store/store";
 
 const menuItems = [
-  { label: "Home", icon: <HomeIcon /> },
-  { label: "Games", icon: <SportsEsportsIcon /> },
-  { label: "Trending", icon: <WhatshotIcon /> },
-  { label: "Top Rated", icon: <StarIcon /> },
-  { label: "Watchlist", icon: <FavoriteIcon /> },
+  { label: "Home", icon: <HomeIcon />, link: '/' },
+  { label: "Games", icon: <SportsEsportsIcon />, link: '/?page=1' },
+  { label: "Top Rated", icon: <StarIcon />, link: '/' },
+  { label: "Watchlist", icon: <FavoriteIcon />, link: '/' },
 ];
 
 const genreItems = [
-  "Action",
-  "Simulator",
-  "Driving",
-  "Shooter",
-  "Adventure",
-  "Open world",
-  "Sony",
-  "Nintendo",
+  { name: "Action", slug: "action" },
+  { name: "Indie", slug: "indie" },
+  { name: "Adventure", slug: "adventure" },
+  { name: "RPG", slug: "role-playing-games-rpg" },
+  { name: "Strategy", slug: "strategy" },
+  { name: "Shooter", slug: "shooter" },
+  { name: "Casual", slug: "casual" },
+  { name: "Simulation", slug: "simulation" },
+  { name: "Puzzle", slug: "puzzle" },
+  { name: "Arcade", slug: "arcade" },
+  { name: "Platformer", slug: "platformer" },
+  { name: "Massively Multiplayer", slug: "massively-multiplayer" },
+  { name: "Racing", slug: "racing" },
+  { name: "Sports", slug: "sports" },
+  { name: "Fighting", slug: "fighting" },
+  { name: "Family", slug: "family" },
+  { name: "Board Games", slug: "board-games" },
+  { name: "Educational", slug: "educational" },
+  { name: "Card", slug: "card" },
 ];
 
-export default function Sidebar({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function Sidebar() {
+  const open = useSidebarStore((state) => state.openSidebar);
+  const handleDrawer = useSidebarStore((state) => state.setOpenSidebar);
   const [openGenres, setOpenGenres] = useState(false);
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
-  function handleDrawerClose() {
-    setOpen(false);
-  }
   return (
     <Drawer
       open={open}
@@ -103,7 +107,7 @@ export default function Sidebar({
                   size="large"
                   edge="start"
                   aria-label="menu"
-                  onClick={handleDrawerClose}
+                  onClick={() => handleDrawer(false)}
                   sx={{ mr: 2 }}
                 >
                   <KeyboardArrowLeftIcon sx={{ color: "gray" }} />
@@ -114,7 +118,7 @@ export default function Sidebar({
         </ListItem>
 
         {menuItems.map((item) => (
-          <ListItem key={item.label} disablePadding>
+          <ListItem key={item.label} component={Link} href={item.link} disablePadding>
             <ListItemButton>
               <Stack
                 direction="row"
@@ -175,9 +179,11 @@ export default function Sidebar({
             >
               <List component="div" disablePadding>
                 {genreItems.map((item) => (
-                  <ListItemButton key={item} sx={{ pl: 4 }}>
-                    <ListItemText primary={item} />
-                  </ListItemButton>
+                  <Link key={item.name} style={{ textDecoration: 'none', color: "gray" }} href={`/?genre=${item.slug}&page=1`}>
+                    <ListItemButton sx={{ pl: 4 }}>
+                        <ListItemText primary={item.name} sx={{ fontSize: { xs: '10px', md: '15px' } }} />
+                    </ListItemButton>
+                  </Link>
                 ))}
               </List>
             </Collapse>

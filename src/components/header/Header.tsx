@@ -17,21 +17,15 @@ import Link from "next/link";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from "@mui/icons-material/Close";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
+import { useSidebarStore } from "@/store/store";
 
-export default function Header({
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
+export default function Header() {
+  const open = useSidebarStore((state) => state.openSidebar);
+  const handleDrawer = useSidebarStore((state) => state.setOpenSidebar);
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
   const [openSearchInput, setOpenSearchInput] = useState(false);
-  function handleDrawerOpen() {
-    setOpen(true);
-  }
   return (
     <Stack direction="column">
       <AppBar
@@ -54,7 +48,7 @@ export default function Header({
               aria-label="menu"
               sx={{ mr: "auto" }}
               onClick={() => {
-                handleDrawerOpen();
+                handleDrawer(true);
                 setOpenSearchInput(false);
               }}
             >
@@ -147,7 +141,7 @@ export default function Header({
       {open && (
         <Box
           role="presentation"
-          onClick={() => setOpen(false)}
+          onClick={() => handleDrawer(false)}
           sx={{
             display: { xs: "block", md: "none" },
             position: "fixed",
