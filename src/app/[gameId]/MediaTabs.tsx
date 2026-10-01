@@ -37,9 +37,18 @@ export default function MediaTabs({ id, name }: { id: string, name: string }) {
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", '& .MuiTabs-indicator': { bgcolor: 'gold' } }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
+          sx={{
+            "& .MuiTab-root": {
+              textTransform: "capitalize",
+              color: "white",
+            },
+            "& .MuiTab-root.Mui-selected": {
+              color: "gold",
+            },
+          }}
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"

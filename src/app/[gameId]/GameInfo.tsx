@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Rating, Stack, Typography } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import ComputerIcon from "@mui/icons-material/Computer";
 import type { GameDetail } from "@/types/type";
@@ -7,8 +7,14 @@ import GamesIcon from '@mui/icons-material/Games';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DownloadingIcon from '@mui/icons-material/Downloading';
+import TagIcon from '@mui/icons-material/Tag';
+import BusinessIcon from '@mui/icons-material/Business';
+import ExplicitIcon from '@mui/icons-material/Explicit';
+import CategoryIcon from "@mui/icons-material/Category";
+import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 
 export default function GameInfo({ data }: { data: GameDetail }) {
+  console.log(data);
   return (
     <Stack>
       <Stack
@@ -66,6 +72,122 @@ export default function GameInfo({ data }: { data: GameDetail }) {
                   </Box>
                 ),
               )}
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack direction="row" spacing={1}>
+          <TagIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              bgcolor: "black",
+              p: 1,
+              borderRadius: "100%",
+            }}
+          />
+          <Stack>
+            <Box sx={{ color: "white" }}>Tags</Box>
+            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+              {data.tags.map((item, index) =>
+                data.tags.length - 1 === index ? (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {item.name}
+                  </Box>
+                ) : (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {`${item.name},`}&nbsp;
+                  </Box>
+                ),
+              )}
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack direction="row" spacing={1}>
+          <CategoryIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              bgcolor: "black",
+              p: 1,
+              borderRadius: "100%",
+            }}
+          />
+          <Stack>
+            <Box sx={{ color: "white" }}>Genres</Box>
+            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+              {data.genres.map((item, index) =>
+                data.genres.length - 1 === index ? (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {item.name}
+                  </Box>
+                ) : (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {`${item.name},`}&nbsp;
+                  </Box>
+                ),
+              )}
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack direction="row" spacing={1}>
+          <BusinessIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              bgcolor: "black",
+              p: 1,
+              borderRadius: "100%",
+            }}
+          />
+          <Stack>
+            <Box sx={{ color: "white" }}>Developers</Box>
+            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+              {data.developers.map((item, index) =>
+                data.developers.length - 1 === index ? (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {item.name}
+                  </Box>
+                ) : (
+                  <Box
+                    sx={{ whiteSpace: "nowrap", fontSize: 12 }}
+                    key={item.name}
+                  >
+                    {`${item.name},`}&nbsp;
+                  </Box>
+                ),
+              )}
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack direction="row" spacing={1}>
+          <ExplicitIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              bgcolor: "black",
+              p: 1,
+              borderRadius: "100%",
+            }}
+          />
+          <Stack>
+            <Box sx={{ color: "white" }}>ESRB</Box>
+            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+              {data.esrb_rating.name}
             </Stack>
           </Stack>
         </Stack>
@@ -151,6 +273,36 @@ export default function GameInfo({ data }: { data: GameDetail }) {
             <Box sx={{ color: "white" }}>Addistions</Box>
             <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
               {data.additions_count}
+            </Stack>
+          </Stack>
+        </Stack>
+        <Stack direction="row" spacing={1}>
+          <ThumbsUpDownIcon
+            fontSize="large"
+            sx={{
+              color: "white",
+              bgcolor: "black",
+              p: 1,
+              borderRadius: "100%",
+            }}
+          />
+          <Stack>
+            <Box sx={{ color: "white" }}>Ratings</Box>
+            <Stack sx={{ color: "gray", flexWrap: "wrap" }}>
+              {data.ratings.map(rating => {
+                const ratingValue = {
+                  exceptional: 4,
+                  recommended: 3,
+                  meh: 2,
+                  skip: 1,
+                }[rating.title];
+                return (
+                  <Stack direction="row" key={rating.id} sx={{ alignItems: 'center' }}>
+                    <Rating name="half-rating-read" value={ratingValue} precision={1} max={4} readOnly />
+                    &nbsp;{rating.percent}%
+                  </Stack>
+                );
+              })}
             </Stack>
           </Stack>
         </Stack>

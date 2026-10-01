@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 export default function GameMain({ data }: { data: GameDetail }) {
   const cleanDescription = DOMPurify.sanitize(data.description);
   return (
-    <Stack sx={{ pt: { xs: 2 } }} spacing={1}>
+    <Stack sx={{ pt: { xs: 2, md: 0 } }} spacing={1}>
       <Stack
         direction="row"
         sx={{ alignItems: "center", fontWeight: "bold", color: "white" }}

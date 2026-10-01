@@ -114,7 +114,8 @@ export type Stores = {
     image_background: string,
     name: string,
     slug: string
-  }
+  },
+  url: string;
 };
 
 export type Tags = {
@@ -132,6 +133,7 @@ export type GameDetail = {
   name: string;
   name_original: string;
   description: string;
+  description_raw: string;
   metacritic: number;
   metacritic_platforms: {
     metascore: number;
@@ -145,7 +147,7 @@ export type GameDetail = {
   website: string;
   rating: number;
   rating_top: number;
-  ratings: Record<string, unknown>;
+  ratings: Rating[];
   reactions: Record<string, unknown>;
   added: number;
   added_by_status: Record<string, unknown>;
@@ -170,6 +172,10 @@ export type GameDetail = {
   parents_count: number;
   additions_count: number;
   game_series_count: number;
+  developers: Genres[];
+  genres: Genres[];
+  tags: Tags[];
+  publishers: Genres[];
 
   esrb_rating: {
     id: number;
@@ -190,6 +196,13 @@ export type GameDetail = {
     };
   }[];
 };
+
+export type Rating = {
+  count: number;
+  id: number;
+  percent: number;
+  title: string;
+}
 
 export type Screenshots = {
 count: number;
