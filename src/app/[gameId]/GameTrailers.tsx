@@ -25,7 +25,6 @@ export default function GameTrailers({ id }: { id: string }) {
     queryKey: ["GameTrailers", id],
     queryFn: () => getGameTrailers(id),
   });
-  console.log(data);
   if (isLoading) {
     return <Box>Loading...</Box>;
   }

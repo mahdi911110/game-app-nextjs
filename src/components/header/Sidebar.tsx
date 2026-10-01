@@ -28,7 +28,7 @@ import { useSidebarStore } from "@/store/store";
 
 const menuItems = [
   { label: "Home", icon: <HomeIcon />, link: '/' },
-  { label: "Games", icon: <SportsEsportsIcon />, link: '/?page=1' },
+  { label: "Games", icon: <SportsEsportsIcon />, link: '/' },
   { label: "Top Rated", icon: <StarIcon />, link: '/' },
   { label: "Watchlist", icon: <FavoriteIcon />, link: '/' },
 ];

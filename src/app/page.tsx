@@ -4,15 +4,15 @@ import { Box } from "@mui/material";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ page: string, genre?: string, filter?: string }>;
+  searchParams: Promise<{ page: string, genre?: string, search?: string }>;
 }) {
-  const { page, genre, filter } = await searchParams;
+  const { page, genre, search } = await searchParams;
   return (
     <Box sx={{ pt: 1, px: 1, bgcolor: 'rgb(30, 30, 30)' }}>
       <CardComponent
         page={((page !== "") && (page !== undefined)) ? Number(page) : 1}
         genre={(genre && (genre !== '')) ? genre : ''}
-        filter={filter ?? ''}
+        search={search ?? ''}
       />
     </Box>
   );

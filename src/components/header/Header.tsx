@@ -17,8 +17,9 @@ import Link from "next/link";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
+import { useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { useSidebarStore } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const open = useSidebarStore((state) => state.openSidebar);
@@ -26,6 +27,22 @@ export default function Header() {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
   const [openSearchInput, setOpenSearchInput] = useState(false);
+  const [search, setSearch] = useState('');
+  const router = useRouter();
+  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
+    setSearch(event.target.value);
+  }
+  function handleOnKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (event.key.trim() === 'Escape') {
+      setSearch('');
+    }
+    if (event.key.trim() === 'Enter') {
+      handleSearchRedirect();
+    }
+  }
+  function handleSearchRedirect() {
+    router.push(`/?page=1&search=${search}`);
+  }
   return (
     <Stack direction="column">
       <AppBar
@@ -58,6 +75,9 @@ export default function Header() {
           {isMd || openSearchInput ? (
             <>
               <TextField
+                onChange={handleSearch}
+                value={search}
+                onKeyDown={handleOnKeyDown}
                 slotProps={{
                   input: {
                     startAdornment: (

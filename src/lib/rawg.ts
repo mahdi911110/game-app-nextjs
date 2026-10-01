@@ -1,11 +1,14 @@
 import '@/lib/proxyAgent';
 
-export async function getAllGames(page: string = '1', genre: string = '') {
+export async function getAllGames(page: string = '1', genre: string = '', search = '') {
   const url = new URL('https://api.rawg.io/api/games');
   url.searchParams.set('key', process.env.API_KEY as string);
   url.searchParams.set('page', page);
   if (genre !== '') {
     url.searchParams.set('genres', genre);
+  }
+  if (search !== '') {
+    url.searchParams.set('search', search);
   }
   const response = await fetch(url);
   if (!response.ok) {
@@ -44,9 +47,10 @@ export async function getGamesTrailer(id: string) {
   return response.json();
 }
 
-export async function getGameCreators(id: string) {
+export async function getGameCreators(id: string, page: string) {
   const url = new URL(`https://api.rawg.io/api/games/${id}/development-team`);
   url.searchParams.set('key', process.env.API_KEY as string);
+  url.searchParams.set('page', String(page));
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error('Failed to fetch game creators.');

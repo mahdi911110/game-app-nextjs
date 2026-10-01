@@ -2,6 +2,11 @@ import { Box, Stack, Typography } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import ComputerIcon from "@mui/icons-material/Computer";
 import type { GameDetail } from "@/types/type";
+import ScoreIcon from "@mui/icons-material/Score";
+import GamesIcon from '@mui/icons-material/Games';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import DownloadingIcon from '@mui/icons-material/Downloading';
 
 export default function GameInfo({ data }: { data: GameDetail }) {
   return (
@@ -65,7 +70,7 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           </Stack>
         </Stack>
         <Stack direction="row" spacing={1}>
-          <ComputerIcon
+          <ScoreIcon
             fontSize="large"
             sx={{
               color: "white",
@@ -75,14 +80,14 @@ export default function GameInfo({ data }: { data: GameDetail }) {
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Creators Count</Box>
+            <Box sx={{ color: "white" }}>Metacretic Score</Box>
             <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
-              {data.creators_count}
+              {data.metacritic}
             </Stack>
           </Stack>
         </Stack>
         <Stack direction="row" spacing={1}>
-          <ComputerIcon
+          <GamesIcon
             fontSize="large"
             sx={{
               color: "white",
@@ -99,7 +104,7 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           </Stack>
         </Stack>
         <Stack direction="row" spacing={1}>
-          <ComputerIcon
+          <EmojiEventsIcon
             fontSize="large"
             sx={{
               color: "white",
@@ -109,14 +114,14 @@ export default function GameInfo({ data }: { data: GameDetail }) {
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Achivment Count</Box>
+            <Box sx={{ color: "white" }}>Achivment</Box>
             <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
               {data.achievements_count}
             </Stack>
           </Stack>
         </Stack>
         <Stack direction="row" spacing={1}>
-          <ComputerIcon
+          <ThumbUpIcon
             fontSize="large"
             sx={{
               color: "white",
@@ -126,14 +131,14 @@ export default function GameInfo({ data }: { data: GameDetail }) {
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Suggestion Count</Box>
+            <Box sx={{ color: "white" }}>Suggestion</Box>
             <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
               {data.suggestions_count}
             </Stack>
           </Stack>
         </Stack>
         <Stack direction="row" spacing={1}>
-          <ComputerIcon
+          <DownloadingIcon
             fontSize="large"
             sx={{
               color: "white",
@@ -143,7 +148,7 @@ export default function GameInfo({ data }: { data: GameDetail }) {
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Addistions Count</Box>
+            <Box sx={{ color: "white" }}>Addistions</Box>
             <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
               {data.additions_count}
             </Stack>

@@ -7,22 +7,22 @@ import { useQuery } from "@tanstack/react-query";
 import PaginationComponent from "@/components/footer/Pagination";
 import { usePathname } from "next/navigation";
 
-async function getGames(page: number, genre = '', filter = '') {
-  const response = await fetch(`/api/games?page=${page}${genre ? `&genre=${genre}` : ''}${filter ? `&filter=${filter}` : ''}`);
+async function getGames(page: number, genre = '', search = '') {
+  const response = await fetch(`/api/games?page=${page}${genre ? `&genre=${genre}` : ''}${search ? `&search=${search}` : ''}`);
   if (!response.ok) {
     throw new Error('Failed to load games');
   }
   return response.json();
 }
 
-export default function CardComponent({ page = 1, genre = '', filter = '' }: { page: number, genre: string, filter: string }) {
+export default function CardComponent({ page = 1, genre = '', search = '' }: { page: number, genre: string, search: string }) {
   const { data, isError, isLoading } = useQuery<Game>({
-    queryKey: ['games', page, genre, filter],
-    queryFn: () => getGames(page, genre, filter)
+    queryKey: ['games', page, genre, search],
+    queryFn: () => getGames(page, genre, search)
   });
   const gameItems: GameItem[] = data?.results ?? [];
   const pathName = usePathname();
-  const url = `${pathName}?${genre ? `genre=${genre}&` : ''}${filter ? `filter=${filter}&` : ''}`;
+  const url = `${pathName}?${genre ? `genre=${genre}&` : ''}${search ? `search=${search}&` : ''}`;
   if (isLoading) {
     return (
       <Box>
@@ -30,7 +30,7 @@ export default function CardComponent({ page = 1, genre = '', filter = '' }: { p
       </Box>
     );
   }
-  if (isError) {
+  if (isError || !data) {
     return (
       <Box>
         Error
@@ -48,7 +48,7 @@ export default function CardComponent({ page = 1, genre = '', filter = '' }: { p
         <PaginationComponent
           url={url}
           page={page}
-          totalPage={100}
+          totalPage={Math.ceil(data.count / 20)}
         />
       </Stack>
     </>

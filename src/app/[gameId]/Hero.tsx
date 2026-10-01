@@ -1,7 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import StarIcon from "@mui/icons-material/Star";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import StarRoundedIcon from '@mui/icons-material/StarRounded';import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import type { GameDetail } from "@/types/type";
 
 export default function Hero({ data }: { data: GameDetail }) {
@@ -41,20 +40,22 @@ export default function Hero({ data }: { data: GameDetail }) {
           sx={{ color: "gray", flexWrap: "wrap" }}
           spacing={0.5}
         >
-          <Stack direction="row" sx={{ flexWrap: "wrap" }}>
-            Also known as
-            {data.alternative_names.map((name, index) =>
-              data.alternative_names.length - 1 === index ? (
-                <Typography key={name} sx={{ fontWeight: "bold", pl: 1 }}>
-                  {name}
-                </Typography>
-              ) : (
-                <Typography key={name} sx={{ fontWeight: "bold", pl: 1 }}>
-                  {`${name},`}
-                </Typography>
-              ),
-            )}
-          </Stack>
+          {data.alternative_names.length !== 0 &&
+            <Stack direction="row" sx={{ flexWrap: "wrap" }}>
+              Also known as
+              {data.alternative_names.map((name, index) =>
+                data.alternative_names.length - 1 === index ? (
+                  <Typography key={name} sx={{ fontWeight: "bold", pl: 1 }}>
+                    {name}
+                  </Typography>
+                ) : (
+                  <Typography key={name} sx={{ fontWeight: "bold", pl: 1 }}>
+                    {`${name},`}
+                  </Typography>
+                ),
+              )}
+            </Stack>
+          }
         </Stack>
         <Stack direction="row" sx={{ color: "gray", pt: 1 }} spacing={0.5}>
           <Stack
@@ -80,7 +81,7 @@ export default function Hero({ data }: { data: GameDetail }) {
             }}
             spacing={0.5}
           >
-            <StarIcon sx={{ color: "gold" }} fontSize="small" />
+            <StarRoundedIcon sx={{ color: "gold" }} fontSize="medium" />
             <Typography
               sx={{ color: "green", fontWeight: "bold", fontSize: 25 }}
             >
