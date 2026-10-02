@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Hero from "./Hero";
 import GameInfo from "./GameInfo";
 import GameMain from "./GameMain";
+import GameDetailLoading from "@/components/skeletonLoading/GameDetailLoading";
 
 async function getGameDetail(gameId: number) {
   const response = await fetch(`/api/game-detail/${gameId}`);
@@ -21,7 +22,9 @@ export default function GameDetail({ gameId }: { gameId: number }) {
     queryFn: () => getGameDetail(gameId),
   });
   if (isLoading) {
-    return <Box>Loading...</Box>;
+    return (
+      <GameDetailLoading />
+    );
   }
   if (isError || !data) {
     return <Box>Error</Box>;

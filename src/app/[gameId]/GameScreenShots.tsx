@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import GameTabImagesLoading from "@/components/skeletonLoading/GameTabImagesLoading";
 
 async function getScreenShots(id: string) {
   const response = await fetch(`/api/screenshots?id=${id}`);
@@ -59,7 +60,9 @@ export default function GameScreenShots({
   }, [selectedScreenshot, data]);
 
   if (isLoading) {
-    return <Box>Loading...</Box>;
+    return (
+      <GameTabImagesLoading />
+    );
   }
   if (isError || !data) {
     return <Box>Error</Box>;

@@ -1,5 +1,6 @@
 'use client';
 
+import GameTabImagesLoading from "@/components/skeletonLoading/GameTabImagesLoading";
 import type { Creators } from "@/types/type";
 import { Box, Pagination, Stack, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
@@ -22,9 +23,7 @@ export default function GameCreators({ id }: { id: string }) {
   });
   if (isLoading) {
     return (
-      <Box>
-        Loading...
-      </Box>
+      <GameTabImagesLoading />
     );
   }
   if (isError || !data) {

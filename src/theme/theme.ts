@@ -40,6 +40,11 @@ declare module "@mui/material/styles" {
       main: string,
       hover: string,
       select: string
+    },
+    
+    skeleton: {
+      main: string;
+      bg: string;
     }
   }
 
@@ -79,6 +84,11 @@ declare module "@mui/material/styles" {
       main?: string;
       hover?: string;
       select?: string;
+    },
+
+    skeleton?: {
+      main?: string;
+      bg?: string;
     }
   }
 }
@@ -125,6 +135,11 @@ export const theme = createTheme({
       main: 'rgba(128, 128, 128, 0.33)',
       hover: 'rgba(230, 228, 230, 0.33)',
       select: '#d0bd46'
+    },
+
+    skeleton: {
+      main: 'rgba(128, 128, 128, 0.33)',
+      bg: 'rgb(28, 25, 28)',
     },
 
     primary: {

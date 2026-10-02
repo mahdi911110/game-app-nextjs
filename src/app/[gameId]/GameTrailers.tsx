@@ -11,6 +11,7 @@ import {
   defaultLayoutIcons,
   DefaultVideoLayout,
 } from "@vidstack/react/player/layouts/default";
+import GameTabImagesLoading from "@/components/skeletonLoading/GameTabImagesLoading";
 
 async function getGameTrailers(id: string) {
   const response = await fetch(`/api/trailers?id=${id}`);
@@ -26,7 +27,9 @@ export default function GameTrailers({ id }: { id: string }) {
     queryFn: () => getGameTrailers(id),
   });
   if (isLoading) {
-    return <Box>Loading...</Box>;
+    return (
+      <GameTabImagesLoading />
+    );
   }
   if (isError || !data) {
     return <Box>Error</Box>;

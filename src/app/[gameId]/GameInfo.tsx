@@ -14,7 +14,6 @@ import CategoryIcon from "@mui/icons-material/Category";
 import ThumbsUpDownIcon from '@mui/icons-material/ThumbsUpDown';
 
 export default function GameInfo({ data }: { data: GameDetail }) {
-  console.log(data);
   return (
     <Stack>
       <Stack

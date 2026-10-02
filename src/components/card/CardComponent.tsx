@@ -6,6 +6,7 @@ import Card from "./Card";
 import { useQuery } from "@tanstack/react-query";
 import PaginationComponent from "@/components/footer/Pagination";
 import { usePathname } from "next/navigation";
+import GamesLoading from "../skeletonLoading/GamesLoading";
 
 async function getGames(page: number, genre = '', search = '') {
   const response = await fetch(`/api/games?page=${page}${genre ? `&genre=${genre}` : ''}${search ? `&search=${search}` : ''}`);
@@ -25,9 +26,7 @@ export default function CardComponent({ page = 1, genre = '', search = '' }: { p
   const url = `${pathName}?${genre ? `genre=${genre}&` : ''}${search ? `search=${search}&` : ''}`;
   if (isLoading) {
     return (
-      <Box>
-        Loading...
-      </Box>
+      <GamesLoading />
     );
   }
   if (isError || !data) {

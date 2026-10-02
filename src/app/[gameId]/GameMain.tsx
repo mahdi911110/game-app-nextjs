@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 export default function GameMain({ data }: { data: GameDetail }) {
   const cleanDescription = DOMPurify.sanitize(data.description);
   return (
-    <Stack sx={{ pt: { xs: 2, md: 0 } }} spacing={1}>
+    <Stack sx={{ pt: { xs: 2, md: 0 } }}>
       <Stack
         direction="row"
         sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text" }}
@@ -33,7 +33,7 @@ export default function GameMain({ data }: { data: GameDetail }) {
       </Typography>
       <Stack
         direction="row"
-        sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text" }}
+        sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text", pt: 1 }}
         spacing={1}
       >
         <OndemandVideoIcon
