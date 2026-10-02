@@ -4,7 +4,7 @@ import type { Screenshots } from "@/types/type";
 import { Box, Button, IconButton, Modal, Stack } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
@@ -30,6 +30,34 @@ export default function GameScreenShots({
   const [selectedScreenshot, setSelectedScreenshot] = useState<number | null>(
     null,
   );
+  useEffect(() => {
+    if (selectedScreenshot === null || !data) return;
+
+    function handleOnKeyDown(event: globalThis.KeyboardEvent) {
+      if (event.key === "ArrowLeft") {
+        setSelectedScreenshot((prev) =>
+          prev !== null && prev > 0 ? prev - 1 : prev,
+        );
+      }
+
+      if (event.key === "ArrowRight") {
+        setSelectedScreenshot((prev) =>
+          prev !== null && prev < data!.results.length - 1 ? prev + 1 : prev,
+        );
+      }
+
+      if (event.key === "Escape") {
+        setSelectedScreenshot(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleOnKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleOnKeyDown);
+    };
+  }, [selectedScreenshot, data]);
+
   if (isLoading) {
     return <Box>Loading...</Box>;
   }
