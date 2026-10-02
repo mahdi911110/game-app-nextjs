@@ -17,8 +17,8 @@ export async function getAllGames(page: string = '1', genre: string = '', search
   return response.json();
 }
 
-export async function getGameDetail(id: number) {
-  const url = new URL(`https://api.rawg.io/api/games/${id}`);
+export async function getGameDetail(slug: string) {
+  const url = new URL(`https://api.rawg.io/api/games/${slug}`);
   url.searchParams.set('key', process.env.API_KEY as string);
   const response = await fetch(url);
   if (!response.ok) {

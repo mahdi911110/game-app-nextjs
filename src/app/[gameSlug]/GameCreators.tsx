@@ -64,7 +64,7 @@ export default function GameCreators({ id }: { id: string }) {
               }}
             >
               <Image
-                src={!result.image ? 'no-image.svg' : result.image}
+                src={!result.image ? '/no-image.svg' : result.image}
                 alt={result.name}
                 fill
                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -8,18 +8,18 @@ import GameInfo from "./GameInfo";
 import GameMain from "./GameMain";
 import GameDetailLoading from "@/components/skeletonLoading/GameDetailLoading";
 
-async function getGameDetail(gameId: number) {
-  const response = await fetch(`/api/game-detail/${gameId}`);
+async function getGameDetail(gameSlug: string) {
+  const response = await fetch(`/api/game-detail/${gameSlug}`);
   if (!response.ok) {
     throw new Error("Failed to load game detail");
   }
   return response.json();
 }
 
-export default function GameDetail({ gameId }: { gameId: number }) {
+export default function GameDetail({ gameSlug }: { gameSlug: string }) {
   const { data, isLoading, isError } = useQuery<GameDetail>({
-    queryKey: ["gameDetail", gameId],
-    queryFn: () => getGameDetail(gameId),
+    queryKey: ["gameDetail", gameSlug],
+    queryFn: () => getGameDetail(gameSlug),
   });
   if (isLoading) {
     return (

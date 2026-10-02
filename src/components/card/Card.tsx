@@ -19,14 +19,14 @@ export default function Card({ gameItem }: { gameItem: GameItem }) {
         borderRadius: 3,
       }}
       component={Link}
-      href={`/${gameItem.id}`}
+      href={`/${gameItem.slug}`}
     >
       <Stack spacing={1}>
         <Box
           sx={{ position: "relative", minWidth: "100px", aspectRatio: "16/9" }}
         >
           <Image
-            src={gameItem.background_image ?? "no-image.svg"}
+            src={gameItem.background_image ?? "/no-image.svg"}
             alt={gameItem.name}
             fill
           />
