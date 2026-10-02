@@ -27,7 +27,7 @@ export default function GameDetail({ gameId }: { gameId: number }) {
     return <Box>Error</Box>;
   }
   return (
-    <Stack sx={{ bgcolor: "rgb(30, 30, 30)", pt: 1, px: 1 }} spacing={5}>
+    <Stack sx={{ bgcolor: "darkSurface.bgGameDetail", pt: 1, px: 1 }} spacing={5}>
       <Hero data={data} />
       <Stack
         direction="row"

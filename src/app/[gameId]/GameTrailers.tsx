@@ -34,8 +34,8 @@ export default function GameTrailers({ id }: { id: string }) {
   if (data.results.length === 0) {
     return (
       <Stack direction="row" spacing={0.5} sx={{ alignItems: "center" }}>
-        <BrowserNotSupportedIcon fontSize="small" sx={{ color: "white" }} />
-        <Box sx={{ color: "white" }}>No videos found</Box>
+        <BrowserNotSupportedIcon fontSize="small" sx={{ color: "darkSurface.text" }} />
+        <Box sx={{ color: "darkSurface.text" }}>No videos found</Box>
       </Stack>
     );
   }
@@ -70,7 +70,7 @@ export default function GameTrailers({ id }: { id: string }) {
               icons={defaultLayoutIcons}
             />
           </MediaPlayer>
-            <Typography sx={{ color: 'white' }}>
+            <Typography sx={{ color: 'darkSurface.text' }}>
               {result.name}
             </Typography>
         </Stack>

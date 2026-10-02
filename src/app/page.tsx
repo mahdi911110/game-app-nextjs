@@ -8,7 +8,7 @@ export default async function Home({
 }) {
   const { page, genre, search } = await searchParams;
   return (
-    <Box sx={{ pt: 1, px: 1, bgcolor: 'rgb(30, 30, 30)' }}>
+    <Box sx={{ pt: 1, px: 1, bgcolor: 'darkSurface.bg' }}>
       <CardComponent
         page={((page !== "") && (page !== undefined)) ? Number(page) : 1}
         genre={(genre && (genre !== '')) ? genre : ''}

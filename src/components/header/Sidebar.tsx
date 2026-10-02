@@ -68,8 +68,8 @@ export default function Sidebar() {
       anchor="left"
       sx={{
         "& .MuiPaper-root": {
-          bgcolor: "black",
-          borderColor: "gray",
+          bgcolor: "darkSurface.main",
+          borderColor: "darkSurface.sidebarText",
           width: open ? 175 : 60,
           transition: "width 0.3s ease",
           overflowX: "hidden",
@@ -83,7 +83,7 @@ export default function Sidebar() {
           },
 
           "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "gray",
+            backgroundColor: "darkSurface.icon",
           },
         },
       }}
@@ -96,7 +96,7 @@ export default function Sidebar() {
               alignItems: "center",
               justifyContent: "space-between",
               width: "100%",
-              color: "rgb(216, 206, 3)",
+              color: "darkSurface.logo",
             }}
           >
             <VideogameAssetIcon fontSize="large" />
@@ -110,7 +110,7 @@ export default function Sidebar() {
                   onClick={() => handleDrawer(false)}
                   sx={{ mr: 2 }}
                 >
-                  <KeyboardArrowLeftIcon sx={{ color: "gray" }} />
+                  <KeyboardArrowLeftIcon sx={{ color: "darkSurface.sidebarText" }} />
                 </IconButton>
               </>
             )}
@@ -124,7 +124,7 @@ export default function Sidebar() {
                 direction="row"
                 sx={{
                   gap: 1,
-                  color: "gray",
+                  color: "darkSurface.sidebarText",
                   alignItems: "center",
                 }}
               >
@@ -150,13 +150,13 @@ export default function Sidebar() {
                 height: "1px",
                 border: 0,
                 background:
-                  "linear-gradient(to left, transparent, #666, transparent)",
+                  `linear-gradient(to left, transparent, ${theme.palette.background.divider}, transparent)`,
               }}
             />
             <ListItemButton onClick={() => setOpenGenres(!openGenres)}>
               <Stack
                 sx={{
-                  color: "gray",
+                  color: "darkSurface.sidebarText",
                   justifyContent: "space-between",
                   width: "100%",
                 }}
@@ -174,12 +174,12 @@ export default function Sidebar() {
             <Collapse
               in={openGenres}
               timeout="auto"
-              sx={{ color: "gray" }}
+              sx={{ color: "darkSurface.sidebarText" }}
               unmountOnExit
             >
               <List component="div" disablePadding>
                 {genreItems.map((item) => (
-                  <Link key={item.name} style={{ textDecoration: 'none', color: "gray" }} href={`/?genre=${item.slug}&page=1`}>
+                  <Link key={item.name} style={{ textDecoration: 'none', color: theme.palette.darkSurface.sidebarText }} href={`/?genre=${item.slug}&page=1`}>
                     <ListItemButton sx={{ pl: 4 }}>
                         <ListItemText primary={item.name} sx={{ fontSize: { xs: '10px', md: '15px' } }} />
                     </ListItemButton>

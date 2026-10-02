@@ -12,36 +12,36 @@ export default function GameMain({ data }: { data: GameDetail }) {
     <Stack sx={{ pt: { xs: 2, md: 0 } }} spacing={1}>
       <Stack
         direction="row"
-        sx={{ alignItems: "center", fontWeight: "bold", color: "white" }}
+        sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text" }}
         spacing={1}
       >
         <AutoStoriesIcon
           sx={{
-            color: "gold",
+            color: "darkSurface.bgGold",
             fontSize: "30px",
             p: 1,
-            bgcolor: "rgba(180, 175, 113, 0.68)",
+            bgcolor: "darkSurface.detailIcons",
             borderRadius: "100%",
           }}
         />
         <Typography sx={{ fontSize: "30px" }}>Summary</Typography>
       </Stack>
       <Typography
-        sx={{ color: "white", bgcolor: "black", p: 4, borderRadius: 5 }}
+        sx={{ color: "darkSurface.text", bgcolor: "darkSurface.main", p: 4, borderRadius: 5 }}
         dangerouslySetInnerHTML={{ __html: cleanDescription }}
       >
       </Typography>
       <Stack
         direction="row"
-        sx={{ alignItems: "center", fontWeight: "bold", color: "white" }}
+        sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text" }}
         spacing={1}
       >
         <OndemandVideoIcon
           sx={{
-            color: "gold",
+            color: "darkSurface.bgGold",
             fontSize: "30px",
             p: 1,
-            bgcolor: "rgba(180, 175, 113, 0.68)",
+            bgcolor: "darkSurface.detailIcons",
             borderRadius: "100%",
           }}
         />

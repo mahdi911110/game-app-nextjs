@@ -37,16 +37,16 @@ export default function MediaTabs({ id, name }: { id: string, name: string }) {
     setValue(newValue);
   };
   return (
-    <Box sx={{ width: "100%", '& .MuiTabs-indicator': { bgcolor: 'gold' } }}>
+    <Box sx={{ width: "100%", '& .MuiTabs-indicator': { bgcolor: 'darkSurface.bgGold' } }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           sx={{
             "& .MuiTab-root": {
               textTransform: "capitalize",
-              color: "white",
+              color: "darkSurface.text",
             },
             "& .MuiTab-root.Mui-selected": {
-              color: "gold",
+              color: "darkSurface.bgGold",
             },
           }}
           value={value}
@@ -54,17 +54,17 @@ export default function MediaTabs({ id, name }: { id: string, name: string }) {
           aria-label="basic tabs example"
         >
           <Tab
-            sx={{ textTransform: "capitalize", color: "white" }}
+            sx={{ textTransform: "capitalize", color: "darkSurface.text" }}
             label="Screenshots"
             {...a11yProps(0)}
           />
           <Tab
-            sx={{ textTransform: "capitalize", color: "white" }}
+            sx={{ textTransform: "capitalize", color: "darkSurface.text" }}
             label="Videos"
             {...a11yProps(1)}
           />
           <Tab
-            sx={{ textTransform: "capitalize", color: "white" }}
+            sx={{ textTransform: "capitalize", color: "darkSurface.text" }}
             label="Creators"
             {...a11yProps(2)}
           />

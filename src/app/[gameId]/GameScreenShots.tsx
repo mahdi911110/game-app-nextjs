@@ -136,10 +136,10 @@ export default function GameScreenShots({
                 </IconButton>
                 <Box
                   sx={{
-                    color: "white",
+                    color: "darkSurface.text",
                     zIndex: 1,
                     mt: "auto",
-                    bgcolor: "gray",
+                    bgcolor: "darkSurface.sidebarText",
                     px: 1,
                     borderRadius: 1,
                     mb: 1,
@@ -156,7 +156,7 @@ export default function GameScreenShots({
                   }
                   disabled={selectedScreenshot === data.results.length - 1}
                 >
-                  <KeyboardArrowRightIcon sx={{ color: "white" }} />
+                  <KeyboardArrowRightIcon sx={{ color: "darkSurface.text" }} />
                 </IconButton>
               </Stack>
             </>

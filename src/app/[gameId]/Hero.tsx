@@ -5,8 +5,10 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import type { GameDetail } from "@/types/type";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Link from "next/link";
+import { theme } from "@/theme/theme";
 
 export default function Hero({ data }: { data: GameDetail }) {
+  const text = theme.palette.darkSurface.text;
   return (
     <Stack sx={{ flexWrap: "wrap" }} direction="row" spacing={3}>
       <Box
@@ -34,13 +36,13 @@ export default function Hero({ data }: { data: GameDetail }) {
       </Box>
       <Stack sx={{ justifyContent: "end" }}>
         <Typography
-          sx={{ color: "white", fontWeight: "bold", fontSize: "30px" }}
+          sx={{ color: "darkSurface.text", fontWeight: "bold", fontSize: "30px" }}
         >
           {data.name}
         </Typography>
         <Stack
           direction="row"
-          sx={{ color: "gray", flexWrap: "wrap" }}
+          sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}
           spacing={0.5}
         >
           {data.alternative_names.length !== 0 && (
@@ -60,10 +62,10 @@ export default function Hero({ data }: { data: GameDetail }) {
             </Stack>
           )}
         </Stack>
-        <Stack direction="row" sx={{ color: "gray", pt: 1 }} spacing={0.5}>
+        <Stack direction="row" sx={{ color: "darkSurface.textGray", pt: 1 }} spacing={0.5}>
           <Stack
             direction="row"
-            sx={{ bgcolor: "black", px: 2, py: 0.5, borderRadius: 10 }}
+            sx={{ bgcolor: "darkSurface.main", px: 2, py: 0.5, borderRadius: 10 }}
           >
             <CalendarMonthIcon fontSize="small" />
             <Typography>{data.released}</Typography>
@@ -71,22 +73,22 @@ export default function Hero({ data }: { data: GameDetail }) {
         </Stack>
         <Stack
           direction="row"
-          sx={{ color: "white", alignItems: "center", mt: 1 }}
+          sx={{ color: "darkSurface.text", alignItems: "center", mt: 1 }}
           spacing={0.5}
         >
           <Stack
             direction="row"
             sx={{
               alignItems: "center",
-              bgcolor: "black",
+              bgcolor: "darkSurface.main",
               px: 2,
               borderRadius: 10,
             }}
             spacing={0.5}
           >
-            <StarRoundedIcon sx={{ color: "gold" }} fontSize="medium" />
+            <StarRoundedIcon sx={{ color: "darkSurface.bgGold" }} fontSize="medium" />
             <Typography
-              sx={{ color: "green", fontWeight: "bold", fontSize: 25 }}
+              sx={{ color: "darkSurface.textGreen", fontWeight: "bold", fontSize: 25 }}
             >
               {data.rating}
             </Typography>
@@ -95,12 +97,12 @@ export default function Hero({ data }: { data: GameDetail }) {
         </Stack>
         <Stack
           direction="row"
-          sx={{ color: "gray", pt: 1, borderRadius: 10 }}
+          sx={{ color: "darkSurface.textGray", pt: 1, borderRadius: 10 }}
           spacing={0.5}
         >
           <Link
             style={{
-              color: "white",
+              color: text,
               textDecoration: "none",
               display: "flex",
               gap: 2,
@@ -113,7 +115,7 @@ export default function Hero({ data }: { data: GameDetail }) {
             <Stack
               direction="row"
               sx={{
-                bgcolor: "black",
+                bgcolor: "darkSurface.main",
                 px: 2,
                 py: 1,
                 borderRadius: 10,

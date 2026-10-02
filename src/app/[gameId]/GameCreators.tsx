@@ -1,7 +1,7 @@
 'use client';
 
 import type { Creators } from "@/types/type";
-import { Box, Button, Pagination, PaginationItem, Stack, Typography } from "@mui/material";
+import { Box, Pagination, Stack, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useState } from "react";
@@ -74,7 +74,7 @@ export default function GameCreators({ id }: { id: string }) {
                 }}
               />
             </Box>
-            <Typography sx={{ color: 'white' }}>
+            <Typography sx={{ color: 'darkSurface.text' }}>
               {result.name}
             </Typography>
           </Stack>
@@ -85,17 +85,21 @@ export default function GameCreators({ id }: { id: string }) {
           page={page}
           count={Math.ceil(data.count / 10)}
           onChange={(_, value) => setPage(value)}
-          color="primary"
           sx={{
             "& .MuiPaginationItem-root": {
-              color: 'white',
+              color: 'darkSurface.text',
               ':hover': {
-                bgcolor: 'gray'
+                bgcolor: 'darkSurface.textGray'
               }
             },
             "& .MuiPaginationItem-root.Mui-selected": {
-              backgroundColor: "gold",
-              color: "white",
+              backgroundColor: "darkSurface.bgGold",
+              color: "darkSurface.text",
+              transition: 'opacity 0.2s',
+              '&:hover': {
+                bgcolor: 'darkSurface.bgGold',
+                opacity: 0.7
+              }
             },
           }}
         />

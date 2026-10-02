@@ -48,7 +48,7 @@ export default function Header() {
       <AppBar
         position="sticky"
         sx={{
-          bgcolor: "black",
+          bgcolor: "darkSurface.main",
           pl: {
             xs: 0,
             md: open ? "175px" : "60px",
@@ -82,7 +82,7 @@ export default function Header() {
                   input: {
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon sx={{ color: "gray" }} />
+                        <SearchIcon sx={{ color: "darkSurface.icon" }} />
                       </InputAdornment>
                     ),
                   },
@@ -91,15 +91,15 @@ export default function Header() {
                   flexGrow: "1",
                   "& .MuiOutlinedInput-root": {
                     borderRadius: 100,
-                    color: "white",
+                    color: "darkSurface.text",
                     "& fieldset": {
-                      borderColor: "rgba(128, 128, 128, 0.33)",
+                      borderColor: "search.main",
                     },
                     "&:hover fieldset": {
-                      borderColor: "rgba(230, 228, 230, 0.33)",
+                      borderColor: "search.hover",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#d0bd46",
+                      borderColor: "search.select",
                     },
                   },
                   mr: 2,
@@ -112,9 +112,9 @@ export default function Header() {
               {!isMd && (
                 <IconButton
                   onClick={() => setOpenSearchInput(false)}
-                  sx={{ bgcolor: "rgba(37, 37, 37, 0.67)", ml: "auto", mr: 1 }}
+                  sx={{ bgcolor: "darkSurface.button", ml: "auto", mr: 1 }}
                 >
-                  <CloseIcon sx={{ color: "gray" }} />
+                  <CloseIcon sx={{ color: "darkSurface.icon" }} />
                 </IconButton>
               )}
             </>
@@ -122,9 +122,9 @@ export default function Header() {
             !open && (
               <IconButton
                 onClick={() => setOpenSearchInput(true)}
-                sx={{ bgcolor: "rgba(37, 37, 37, 0.67)", mr: 1 }}
+                sx={{ bgcolor: "darkSurface.button", mr: 1 }}
               >
-                <SearchIcon sx={{ color: "gray" }} />
+                <SearchIcon sx={{ color: "darkSurface.icon" }} />
               </IconButton>
             )
           )}
@@ -144,16 +144,16 @@ export default function Header() {
                   borderRadius: 10,
                   alignItems: "center",
                   gap: 1,
-                  color: "gray",
-                  bgcolor: "rgba(37, 37, 37, 0.67)",
+                  color: "darkSurface.icon",
+                  bgcolor: "darkSurface.button",
                 }}
               >
-                <PersonIcon sx={{ color: "gray" }} />
+                <PersonIcon sx={{ color: "darkSurface.icon" }} />
                 <Box>Name</Box>
               </Stack>
             </Link>
-            <IconButton sx={{ bgcolor: "rgba(37, 37, 37, 0.67)" }}>
-              <LogoutIcon sx={{ color: "gray" }} />
+            <IconButton sx={{ bgcolor: "darkSurface.button" }}>
+              <LogoutIcon sx={{ color: "darkSurface.icon" }} />
             </IconButton>
           </Stack>
         </Toolbar>
@@ -166,7 +166,7 @@ export default function Header() {
             display: { xs: "block", md: "none" },
             position: "fixed",
             inset: 0,
-            bgcolor: "black",
+            bgcolor: "darkSurface.main",
             opacity: 0.2,
             zIndex: (theme) => theme.zIndex.drawer - 1,
           }}

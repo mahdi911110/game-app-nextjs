@@ -19,15 +19,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
     <Stack>
       <Stack
         direction="row"
-        sx={{ alignItems: "center", fontWeight: "bold", color: "white" }}
+        sx={{ alignItems: "center", fontWeight: "bold", color: "darkSurface.text" }}
         spacing={1}
       >
         <InfoIcon
           sx={{
-            color: "gold",
+            color: "darkSurface.bgGold",
             fontSize: "30px",
             p: 1,
-            bgcolor: "rgba(180, 175, 113, 0.68)",
+            bgcolor: "darkSurface.detailIcons",
             borderRadius: "100%",
           }}
         />
@@ -35,7 +35,7 @@ export default function GameInfo({ data }: { data: GameDetail }) {
       </Stack>
       <Stack
         sx={{
-          bgcolor: "rgb(28, 25, 28)",
+          bgcolor: "darkSurface.bgDetails",
           borderRadius: 3,
           p: 2,
           width: { xs: "100%", md: "300px", lg: "400px" },
@@ -46,15 +46,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <ComputerIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Platforms</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Platforms</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.platforms.map((item, index) =>
                 data.platforms.length - 1 === index ? (
                   <Box
@@ -79,15 +79,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <TagIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Tags</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Tags</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.tags.map((item, index) =>
                 data.tags.length - 1 === index ? (
                   <Box
@@ -112,15 +112,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <CategoryIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Genres</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Genres</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.genres.map((item, index) =>
                 data.genres.length - 1 === index ? (
                   <Box
@@ -145,15 +145,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <BusinessIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Developers</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Developers</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.developers.map((item, index) =>
                 data.developers.length - 1 === index ? (
                   <Box
@@ -178,15 +178,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <ExplicitIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>ESRB</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>ESRB</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.esrb_rating.name}
             </Stack>
           </Stack>
@@ -195,15 +195,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <ScoreIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Metacretic Score</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Metacretic Score</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.metacritic}
             </Stack>
           </Stack>
@@ -212,15 +212,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <GamesIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Playtime</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Playtime</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {`${data.playtime}h`}
             </Stack>
           </Stack>
@@ -229,15 +229,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <EmojiEventsIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Achivment</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Achivment</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.achievements_count}
             </Stack>
           </Stack>
@@ -246,15 +246,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <ThumbUpIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Suggestion</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Suggestion</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.suggestions_count}
             </Stack>
           </Stack>
@@ -263,15 +263,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <DownloadingIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Addistions</Box>
-            <Stack direction="row" sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Addistions</Box>
+            <Stack direction="row" sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.additions_count}
             </Stack>
           </Stack>
@@ -280,15 +280,15 @@ export default function GameInfo({ data }: { data: GameDetail }) {
           <ThumbsUpDownIcon
             fontSize="large"
             sx={{
-              color: "white",
-              bgcolor: "black",
+              color: "darkSurface.text",
+              bgcolor: "darkSurface.main",
               p: 1,
               borderRadius: "100%",
             }}
           />
           <Stack>
-            <Box sx={{ color: "white" }}>Ratings</Box>
-            <Stack sx={{ color: "gray", flexWrap: "wrap" }}>
+            <Box sx={{ color: "darkSurface.text" }}>Ratings</Box>
+            <Stack sx={{ color: "darkSurface.textGray", flexWrap: "wrap" }}>
               {data.ratings.map(rating => {
                 const ratingValue = {
                   exceptional: 4,

@@ -16,20 +16,20 @@ export default function PaginationComponent({
       count={totalPage}
       sx={{
         "& .MuiPaginationItem-root": {
-          color: 'white',
+          color: 'pagination.text',
           ':hover': {
-            bgcolor: 'gray'
+            bgcolor: 'pagination.bgHover'
           }
         },
          "& .MuiPaginationItem-root.Mui-selected": {
-            backgroundColor: "gold",
-            color: "white",
+            backgroundColor: "pagination.bg",
+            color: "pagination.text",
           },
       }}
       renderItem={(item) => (
         <PaginationItem
           sx={{
-            color: 'white'
+            color: 'pagination.text'
           }}
           {...item}
           component={Link}

@@ -11,9 +11,9 @@ export default function Card({ gameItem }: { gameItem: GameItem }) {
       sx={{
         ":hover": { transform: "scale(1.03)" },
         transition: "transform 0.3s",
-        bgcolor: "black",
-        color: "white",
-        textDecoration: "white",
+        bgcolor: "darkSurface.main",
+        color: "darkSurface.text",
+        textDecoration: "none",
         pb: 1,
         overflow: "hidden",
         borderRadius: 3,
@@ -41,7 +41,7 @@ export default function Card({ gameItem }: { gameItem: GameItem }) {
               fontSize: 13,
             }}
           >
-            <StarIcon sx={{ color: "gold", fontSize: 13 }} />
+            <StarIcon sx={{ color: "darkSurface.bgGold", fontSize: 13 }} />
             {gameItem.rating}({gameItem.reviews_count})
           </Box>
         </Box>
