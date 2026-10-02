@@ -19,8 +19,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Game Next App",
-  description: "This is a game next app",
+  title: {
+    default: "Game Next",
+    template: "%s | Game Next",
+  },
+  description: "Explore and discover games with Game Next.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
