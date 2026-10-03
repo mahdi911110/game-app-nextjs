@@ -20,6 +20,7 @@ declare module "@mui/material/styles" {
       detailIcons: string;
       bgDetails: string;
       bgGameDetail: string;
+      link: string;
     },
 
     pagination: {
@@ -64,16 +65,17 @@ declare module "@mui/material/styles" {
       detailIcons?: string;
       bgDetails?: string;
       bgGameDetail?: string;
+      link?: string;
     },
 
-    pagination: {
+    pagination?: {
       text?: string,
       selectedText?: string,
       bg?: string,
       bgHover?: string
     },
 
-    footer: {
+    footer?: {
       rawg?: string,
       text?: string,
       bg?: string,
@@ -115,6 +117,7 @@ export const theme = createTheme({
       detailIcons: 'rgba(180, 175, 113, 0.68)',
       bgDetails: 'rgb(28, 25, 28)',
       bgGameDetail: 'rgb(30, 30, 30)',
+      link: 'rgb(1, 154, 249)',
     },
     
     pagination: {

@@ -19,7 +19,7 @@ export default function Card({ gameItem }: { gameItem: GameItem }) {
         borderRadius: 3,
       }}
       component={Link}
-      href={`/${gameItem.slug}`}
+      href={`/game/${gameItem.slug}`}
     >
       <Stack spacing={1}>
         <Box

@@ -20,8 +20,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { useSidebarStore } from "@/store/store";
 import { useRouter } from "next/navigation";
+import LoginIcon from '@mui/icons-material/Login';
+import { logout } from "@/action/logout";
 
-export default function Header() {
+export default function Header({ user }: { user: string | null }) {
   const open = useSidebarStore((state) => state.openSidebar);
   const handleDrawer = useSidebarStore((state) => state.setOpenSidebar);
   const theme = useTheme();
@@ -136,25 +138,47 @@ export default function Header() {
             direction="row"
             spacing={1}
           >
-            <Link style={{ textDecoration: "none" }} href="/">
-              <Stack
-                direction="row"
-                sx={{
-                  p: 1,
-                  borderRadius: 10,
-                  alignItems: "center",
-                  gap: 1,
-                  color: "darkSurface.icon",
-                  bgcolor: "darkSurface.button",
-                }}
-              >
-                <PersonIcon sx={{ color: "darkSurface.icon" }} />
-                <Box>Name</Box>
-              </Stack>
-            </Link>
-            <IconButton sx={{ bgcolor: "darkSurface.button" }}>
-              <LogoutIcon sx={{ color: "darkSurface.icon" }} />
-            </IconButton>
+            {user ?
+              <>
+                <Link style={{ textDecoration: "none" }} href="/profile">
+                  <Stack
+                    direction="row"
+                    sx={{
+                      p: 1,
+                      borderRadius: 10,
+                      alignItems: "center",
+                      gap: 1,
+                      color: "darkSurface.icon",
+                      bgcolor: "darkSurface.button",
+                    }}
+                  >
+                    <PersonIcon sx={{ color: "darkSurface.icon" }} />
+                    <Box>Name</Box>
+                  </Stack>
+                </Link>
+                <form action={logout}>
+                  <IconButton type="submit" sx={{ bgcolor: "darkSurface.button" }}>
+                    <LogoutIcon sx={{ color: "darkSurface.icon" }} />
+                  </IconButton>
+                </form>
+              </>
+            :
+              <Link style={{ textDecoration: "none" }} href="/login">
+                <Stack
+                  direction="row"
+                  sx={{
+                    p: 1,
+                    borderRadius: 10,
+                    alignItems: "center",
+                    gap: 1,
+                    color: "darkSurface.icon",
+                    bgcolor: "darkSurface.button",
+                  }}
+                >
+                  <LoginIcon sx={{ color: "darkSurface.icon" }} />
+                </Stack>
+              </Link>
+            }
           </Stack>
         </Toolbar>
       </AppBar>

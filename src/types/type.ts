@@ -260,3 +260,14 @@ export type CreatorsResults = {
   name: string;
   slug: string;
 };
+
+export type User = {
+  id: number;
+  email: string;
+  username: string;
+  password_hash: string;
+} | undefined;
+
+export type PrevState = {
+  error: string;
+} | undefined | null;

@@ -34,11 +34,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <AppRouterCacheProvider>
             <MuiTheme>
               <CssBaseline />
-              <MainNavbar />
-              <PageProvider>
                 {children}
-              </PageProvider>
-              <Footer />
             </MuiTheme>
           </AppRouterCacheProvider>
         </QueryProvider>
