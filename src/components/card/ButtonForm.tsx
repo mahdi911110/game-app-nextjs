@@ -18,7 +18,7 @@ export default function ButtonForm({
   gameId: number;
 }) {
   const { data } = useQuery<{ game_id: number }[]>({
-    queryKey: ['watchlist', gameId],
+    queryKey: ['watchlist-status'],
     queryFn: getGame
   });
   if (data?.length === 0) {

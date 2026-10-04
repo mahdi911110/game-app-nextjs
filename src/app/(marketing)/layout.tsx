@@ -17,7 +17,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const user = await getCurrentUser();
   return (
     <QueryProvider>
-      <MainNavbar user={user?.id ? user.id : null} />
+      <MainNavbar user={user ?? null} />
       <PageProvider>
           {children}
       </PageProvider>

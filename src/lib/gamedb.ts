@@ -132,6 +132,37 @@ export function getAllGames(userId: number) {
   return game;
 }
 
+export function getAllGamesWithPage(userId: number, page = 1) {
+  const limit = 20;
+  const offset = (page - 1) * limit;
+  const game = db.prepare(`
+    SELECT game_id FROM watchlist_items
+    WHERE watchlist_id = (
+      SELECT id FROM watchlist
+      WHERE user_id = ?
+    )
+    LIMIT ? OFFSET ?
+  `).all(userId, limit, offset) as { game_id: number }[];
+  
+  return game;
+}
+
+export function getTotalItems(userId: number) {
+  const totalItems = db.prepare(`
+    SELECT COUNT(*) AS count FROM watchlist_items
+    WHERE watchlist_id = (
+      SELECT id FROM watchlist
+      WHERE user_id = ?
+    )
+  `).get(userId) as { count: number } | undefined;
+
+  if (!totalItems) {
+    return 0;
+  }
+  
+  return totalItems.count;
+}
+
 export function addGame(userId: number, gameId: number) {
   const watchlist = db.prepare(`
     SELECT id FROM watchlist

@@ -6,10 +6,11 @@ import { redirect } from "next/navigation";
 
 type PrevState = {
   error: string;
+} | {
+  success: boolean;
 } | null;
 
 export async function buttonAddAction(id: number, prevState: PrevState, formData: FormData) {
-  console.log('hello world');
   const user = await getCurrentUser();
   if (!user) {
     redirect('/login');
@@ -19,5 +20,5 @@ export async function buttonAddAction(id: number, prevState: PrevState, formData
   if (game?.error) {
     return { error: game.error };
   }
-  return null;
+  return { success: true };
 }

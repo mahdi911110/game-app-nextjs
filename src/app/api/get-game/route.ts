@@ -11,7 +11,7 @@ export async function GET() {
     const game = getAllGames(Number(user.id));
     return Response.json(game);
   } catch(err) {
-    console.log(err);
+    console.error(err);
     return Response.json(
       { message: 'Failed to load button status' },
       { status: 500 }

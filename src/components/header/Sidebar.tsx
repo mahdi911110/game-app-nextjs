@@ -30,7 +30,7 @@ const menuItems = [
   { label: "Home", icon: <HomeIcon />, link: '/' },
   { label: "Games", icon: <SportsEsportsIcon />, link: '/' },
   { label: "Top Rated", icon: <StarIcon />, link: '/' },
-  { label: "Watchlist", icon: <FavoriteIcon />, link: '/' },
+  { label: "Watchlist", icon: <FavoriteIcon />, link: '/watchlist?page=1' },
 ];
 
 const genreItems = [

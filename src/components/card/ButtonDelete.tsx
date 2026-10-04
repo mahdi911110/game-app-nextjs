@@ -1,7 +1,7 @@
 'use client';
 
 import { CircularProgress, Fab } from "@mui/material";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { buttonDeleteAction } from "./buttonDeleteAction";
 import { useQueryClient } from "@tanstack/react-query";
@@ -12,9 +12,12 @@ export default function ButtonDelete({ id }: { id: number }) {
     null
   );
   const queryClient = useQueryClient();
-  queryClient.invalidateQueries({
-    queryKey: ['watchlist', id]
-  });
+  useEffect(() => {
+    if (state?.success) {
+      queryClient.invalidateQueries({ queryKey: ['watchlist-status'] });
+      queryClient.invalidateQueries({ queryKey: ['watchlist-list'] });
+    }
+  }, [state, queryClient, id]);
   return (
     <form action={formAction}>
       <Fab

@@ -22,8 +22,9 @@ import { useSidebarStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import LoginIcon from '@mui/icons-material/Login';
 import { logout } from "@/action/logout";
+import { User } from "next-auth";
 
-export default function Header({ user }: { user: string | null }) {
+export default function Header({ user }: { user: User | null }) {
   const open = useSidebarStore((state) => state.openSidebar);
   const handleDrawer = useSidebarStore((state) => state.setOpenSidebar);
   const theme = useTheme();
@@ -153,7 +154,7 @@ export default function Header({ user }: { user: string | null }) {
                     }}
                   >
                     <PersonIcon sx={{ color: "darkSurface.icon" }} />
-                    <Box>Name</Box>
+                    <Box>{user.name ? user.name : 'Name'}</Box>
                   </Stack>
                 </Link>
                 <form action={logout}>

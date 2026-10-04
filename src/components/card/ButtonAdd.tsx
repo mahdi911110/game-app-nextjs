@@ -2,7 +2,7 @@
 
 import { CircularProgress, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { buttonAddAction } from "./buttonAddAction";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -12,9 +12,12 @@ export default function ButtonAdd({ id }: { id: number }) {
     null
   );
   const queryClient = useQueryClient();
-  queryClient.invalidateQueries({
-    queryKey: ['watchlist', id]
-  });
+  useEffect(() => {
+    if (state?.success) {
+      queryClient.invalidateQueries({ queryKey: ['watchlist-status'] });
+      queryClient.invalidateQueries({ queryKey: ['watchlist-list'] });
+    }
+  }, [state, queryClient, id]);
   return (
     <form action={formAction}>
       <Fab
