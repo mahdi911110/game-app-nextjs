@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn } from "@/lib/auth";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 import z from "zod";
 
 const LoginData = z.object({
@@ -53,7 +54,12 @@ export async function loginAction(
       redirectTo: "/",
     });
   } catch (err) {
-    console.error(err);
-    return { error: "Wrong password or invalid username or email." };
+    if (isRedirectError(err)) {
+      throw err;
+    }
+    
+    return {
+      error: "Invalid username or password",
+    };
   }
 }
