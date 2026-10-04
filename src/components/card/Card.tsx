@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { GameItem } from "@/types/type";
 import Link from "next/link";
 import StarIcon from "@mui/icons-material/Star";
+import ButtonForm from "./ButtonForm";
 
 export default function Card({ gameItem }: { gameItem: GameItem }) {
   return (
@@ -30,6 +31,7 @@ export default function Card({ gameItem }: { gameItem: GameItem }) {
             alt={gameItem.name}
             fill
           />
+          <ButtonForm gameId={gameItem.id} />
         </Box>
         <Box sx={{ pl: 2 }}>
           <Box>{gameItem.name}</Box>

@@ -70,19 +70,93 @@ export async function signup(
   email: string,
   password: string,
 ) {
-  const user = getUser(username, email);
-  if (user) {
-    return { error: "Email or username is already exists" };
+  const passwordHash = await bcrypt.hash(password, 12);
+
+  const createUser = db.transaction(() => {
+    const user = getUser(username, email);
+
+    if (user) {
+      return {
+        error: "Email or username already exists",
+      };
+    }
+
+    const newUser = db
+      .prepare(`
+        INSERT INTO users (
+          username,
+          email,
+          password_hash
+        )
+        VALUES (?, ?, ?)
+      `)
+      .run(username, email, passwordHash);
+
+    db.prepare(`
+      INSERT INTO watchlist (
+        user_id
+      )
+      VALUES (?)
+    `).run(newUser.lastInsertRowid);
+
+    return {
+      success: true,
+    };
+  });
+
+  return createUser();
+}
+
+export function getGame(userId: number, gameId: number) {
+  const game = db.prepare(`
+    SELECT id FROM watchlist_items
+    WHERE game_id = ?
+      AND watchlist_id = (
+        SELECT id FROM watchlist
+        WHERE user_id = ?
+      )
+  `).get(gameId, userId) as { id: number } | undefined;
+  
+  return !!game;
+}
+
+export function getAllGames(userId: number) {
+  const game = db.prepare(`
+    SELECT game_id FROM watchlist_items
+    WHERE watchlist_id = (
+      SELECT id FROM watchlist
+      WHERE user_id = ?
+    )
+  `).all(userId) as { game_id: number }[];
+  
+  return game;
+}
+
+export function addGame(userId: number, gameId: number) {
+  const watchlist = db.prepare(`
+    SELECT id FROM watchlist
+    WHERE user_id = ?
+  `).get(userId) as { id: number } | undefined;
+
+  if (!watchlist) {
+    return { error: 'You must login to add game to your watchlist' };
   }
 
-  const password_hash = await bcrypt.hash(password, 12);
-  db.prepare(
-    `
-    INSERT INTO users(
-      username,
-      email,
-      password_hash
-    ) VALUES (?, ?, ?)
-  `,
-  ).run(username, email, password_hash);
+  db.prepare(`
+    INSERT INTO watchlist_items(
+      watchlist_id,
+      game_id
+    ) VALUES (?, ?)
+  `).run(watchlist.id, gameId);
+}
+
+export function deleteGame(userId: number, gameId: number) {
+  db.prepare(`
+    DELETE FROM watchlist_items
+    WHERE game_id = ?
+      AND watchlist_id = (
+        SELECT id FROM watchlist
+        WHERE user_id = ?
+      )
+  `).run(gameId, userId);
 }
