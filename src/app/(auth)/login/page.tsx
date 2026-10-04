@@ -102,6 +102,11 @@ export default function LoginPage() {
                 my: 1,
               }}
             ></TextField>
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors.usernameOrEmail}
+              </Typography>
+            }
             <Typography>Password:</Typography>
             <TextField
               placeholder="Enter password..."
@@ -146,9 +151,14 @@ export default function LoginPage() {
                 my: 1,
               }}
             ></TextField>
-            {state &&
+            {state?.error &&
               <Typography color="error">
                 {state.error}
+              </Typography>
+            }
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors.password}
               </Typography>
             }
             <Stack direction="row" spacing={0.5}>

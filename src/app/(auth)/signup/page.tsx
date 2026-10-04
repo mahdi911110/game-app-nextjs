@@ -103,6 +103,11 @@ export default function SignupPage() {
                 my: 1,
               }}
             ></TextField>
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors?.username}
+              </Typography>
+            }
             <Typography>Email:</Typography>
             <TextField
               placeholder="Enter email..."
@@ -128,6 +133,11 @@ export default function SignupPage() {
                 my: 1,
               }}
             ></TextField>
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors?.email}
+              </Typography>
+            }
             <Typography>Password:</Typography>
             <TextField
               placeholder="Enter password..."
@@ -172,6 +182,11 @@ export default function SignupPage() {
                 my: 1,
               }}
             ></TextField>
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors?.password}
+              </Typography>
+            }
             <Typography>Type password again:</Typography>
             <TextField
               placeholder="Enter password again..."
@@ -216,7 +231,12 @@ export default function SignupPage() {
                 my: 1,
               }}
             ></TextField>
-            {state &&
+            {state?.errors &&
+              <Typography color="error">
+                {state.errors?.passwordAgain}
+              </Typography>
+            }
+            {state?.error &&
               <Typography color="error">
                 {state.error}
               </Typography>
