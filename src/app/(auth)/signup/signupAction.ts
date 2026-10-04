@@ -1,6 +1,8 @@
 "use server";
 
+import { signIn } from "@/lib/auth";
 import { signup } from "@/lib/gamedb";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 import z from "zod";
 
 type PrevState = {
@@ -64,5 +66,21 @@ export async function signupAction(
 
   if (signupResult?.error) {
     return { error: signupResult.error };
+  }
+
+  try {
+    await signIn("credentials", {
+      usernameOrEmail: data.username,
+      password: data.password,
+      redirectTo: "/",
+    });
+  } catch (err) {
+    if (isRedirectError(err)) {
+      throw err;
+    }
+    
+    return {
+      error: "Invalid username or password",
+    };
   }
 }
