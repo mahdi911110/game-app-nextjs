@@ -20,7 +20,7 @@ const SignupData = z
     username: z.string().min(1, "Fields must not be empty."),
     email: z.string().min(1, "Fields must not be empty."),
     password: z.string().min(1, "Fields must not be empty."),
-    passwordAgain: z.string().min(1, "Fields must not be empty."),
+    passwordAgain: z.string().min(1, "Fields must be at least 8 characters."),
   })
   .refine((data) => data.password === data.passwordAgain,
   {

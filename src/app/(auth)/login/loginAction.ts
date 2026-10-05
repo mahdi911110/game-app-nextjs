@@ -6,7 +6,7 @@ import z from "zod";
 
 const LoginData = z.object({
   usernameOrEmail: z.string().min(1, 'Fields must not be empty.'),
-  password: z.string().min(1, 'Fields must not be empty.'),
+  password: z.string().min(8, 'Fields must be at least 8 characters.'),
 });
 
 type PrevState = {
