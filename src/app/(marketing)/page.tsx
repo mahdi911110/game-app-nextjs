@@ -1,5 +1,5 @@
 import CardComponent from "@/components/card/CardComponent";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import {
   dehydrate,
   HydrationBoundary,
@@ -78,7 +78,17 @@ export default async function Home({
     .catch(noop);
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Box sx={{ pt: 1, px: 1, bgcolor: "darkSurface.bg" }}>
+      <Box sx={{ pt: 1, px: 1, bgcolor: "darkSurface.bg", minHeight: '80vh' }}>
+        {search &&
+          <Typography sx={{ color: 'darkSurface.text', pb: 1, display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
+            Search result for: &quot;{search}&quot;
+          </Typography>
+        }
+        {genre &&
+          <Typography sx={{ color: 'darkSurface.text', pb: 1, display: 'inline-flex', alignItems: 'center', gap: 0.5 }}>
+            Result for genre: &quot;{genre}&quot;
+          </Typography>
+        }
         <CardComponent
           page={page !== "" && page !== undefined ? Number(page) : 1}
           genre={genre && genre !== "" ? genre : ""}
