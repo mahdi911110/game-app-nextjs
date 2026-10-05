@@ -3,11 +3,8 @@ import { Stack, Typography } from "@mui/material";
 import MediaTabs from "./MediaTabs";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import DOMPurify from "dompurify";
-
 
 export default function GameMain({ data }: { data: GameDetail }) {
-  const cleanDescription = DOMPurify.sanitize(data.description);
   return (
     <Stack sx={{ pt: { xs: 2, md: 0 } }}>
       <Stack
@@ -28,8 +25,8 @@ export default function GameMain({ data }: { data: GameDetail }) {
       </Stack>
       <Typography
         sx={{ color: "darkSurface.text", bgcolor: "darkSurface.main", p: 4, borderRadius: 5 }}
-        dangerouslySetInnerHTML={{ __html: cleanDescription }}
       >
+        {data.description_raw}
       </Typography>
       <Stack
         direction="row"
