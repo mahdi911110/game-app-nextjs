@@ -6,6 +6,7 @@ import type { GameDetail } from "@/types/type";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import Link from "next/link";
 import { theme } from "@/theme/theme";
+import ButtonForm from "@/components/card/ButtonForm";
 
 export default function Hero({ data }: { data: GameDetail }) {
   const text = theme.palette.darkSurface.text;
@@ -32,6 +33,7 @@ export default function Hero({ data }: { data: GameDetail }) {
           }}
         >
           <Image src={data.background_image} alt={data.name} fill />
+          <ButtonForm gameId={data.id} />
         </Box>
       </Box>
       <Stack sx={{ justifyContent: "end" }}>
