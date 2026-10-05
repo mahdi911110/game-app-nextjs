@@ -216,8 +216,17 @@ src/
 ├── theme/
 │   └── theme.ts
 │
-└── types/
-    └── type.ts
+├── types/
+│   └── type.ts
+│
+├── .gitignore
+├── eslint.config.mjs
+├── LICENSE
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── README.md
+└── tsconfig.json
 ```
 
 ---
