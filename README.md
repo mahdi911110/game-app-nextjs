@@ -289,6 +289,34 @@ The API layer keeps the RAWG API key on the server rather than exposing it direc
 
 ---
 
+## 📸 Preview
+
+### Home Page
+
+![Home Page](screenshots/home.jpg)
+
+### Game Detail Page
+
+![Game Detail Page](screenshots/game-detail.jpg)
+
+### Profile Page
+
+![Profile Page](screenshots/profile.jpg)
+
+### Signup Page
+
+![Signup Page](screenshots/signup.jpg)
+
+### Login Page
+
+![Login Page](screenshots/login.jpg)
+
+### Watchlist Page
+
+![Watchlist Page](screenshots/watchlist.jpg)
+
+---
+
 ## 🌐 RAWG Integration
 
 RAWG is the primary external data source.
